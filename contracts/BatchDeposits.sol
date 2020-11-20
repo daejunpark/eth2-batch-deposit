@@ -108,13 +108,10 @@ contract BatchDeposit is Pausable, Ownable {
         emit FeeCollected(msg.sender, _fee.mul(count));
 
         for (uint256 i = 0; i < count; ++i) {
-            bytes memory pubkey = bytes(pubkeys[i*PUBKEY_LENGTH:(i+1)*PUBKEY_LENGTH]);
-            bytes memory signature = bytes(signatures[i*SIGNATURE_LENGTH:(i+1)*SIGNATURE_LENGTH]);
-
             IDepositContract(depositContract).deposit{value: DEPOSIT_AMOUNT}(
-                pubkey,
+                bytes(pubkeys[i*PUBKEY_LENGTH:(i+1)*PUBKEY_LENGTH]),
                 withdrawal_credentials,
-                signature,
+                bytes(signatures[i*SIGNATURE_LENGTH:(i+1)*SIGNATURE_LENGTH]),
                 deposit_data_roots[i]
             );
         }
