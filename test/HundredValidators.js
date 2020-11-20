@@ -60,6 +60,8 @@
 //       }
 //     );
 
+//     // console.log(`GasUsed: ${res.receipt.gasUsed}`);
+
 //     assert.equal(
 //       res.receipt.rawLogs.length,
 //       101,

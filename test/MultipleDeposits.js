@@ -46,6 +46,8 @@ contract("BatchDeposit", async (accounts) => {
       }
     );
 
+    // console.log(`GasUsed: ${res.receipt.gasUsed}`);
+
     assert.equal(
       res.receipt.rawLogs.length,
       4,
